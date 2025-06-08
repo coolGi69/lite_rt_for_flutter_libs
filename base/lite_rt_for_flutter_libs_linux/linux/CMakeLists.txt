@@ -22,11 +22,10 @@ elseif(CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64" OR
         CMAKE_SYSTEM_PROCESSOR STREQUAL "AMD64")
     set(LIB_TFLITE ${CMAKE_CURRENT_SOURCE_DIR}/libtensorflowlite_x86_c.so)
 endif()
-configure_file(${LIB_TFLITE} ${CMAKE_CURRENT_SOURCE_DIR}/libtensorflowlite_c.so COPYONLY)
 
 set(lite_rt_for_flutter_libs_linux_bundled_libraries
   # Defined in ../src/CMakeLists.txt.
   # This can be changed to accommodate different builds.
-  ${CMAKE_CURRENT_SOURCE_DIR}/libtensorflowlite_c.so
+  ${LIB_TFLITE}
   PARENT_SCOPE
 )
